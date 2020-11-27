@@ -1,8 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('./../database/db');
 
-class Message extends Model {}
-Message.init({
+const Message = sequelize.define('message', {
   message_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -13,8 +12,7 @@ Message.init({
   message_date: DataTypes.DATE
 
 }, {
-  sequelize,
-  modelName: 'message'
+  tableName: 'message'
 });
 
 module.exports = Message;

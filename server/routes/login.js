@@ -45,7 +45,7 @@ app.post('/login', (req, resp) => {
         errorManager: {
           status: resp.statusCode,
           errorNumber: 3,
-          description: 'Usuario o contraseña incorrecto klask'
+          description: 'Usuario o contraseña incorrecto'
         }
       });
     } else {
@@ -55,7 +55,14 @@ app.post('/login', (req, resp) => {
 
       resp.json(({
         data: {
-          accessToken: token
+          accessToken: token,
+          user: {
+            id: userDB.user_id,
+            name: userDB.user_name,
+            lastname: userDB.user_lastname,
+            email: userDB.user_email,
+            avatar: userDB.user_avatar
+          }
         },
         errorManager: {
           status: resp.statusCode,

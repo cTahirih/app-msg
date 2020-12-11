@@ -18,10 +18,15 @@ app.post('/register', (req, res) => {
 
   User.create(user.dataValues)
     .then((e) => {
-      console.log(e);
       res.json({
         data: {
-          user: e
+          user: {
+            user_id: e.user_id,
+            user_name: e.user_name,
+            user_lastname: e.user_lastname,
+            user_email: e.user_email,
+            user_avatar: e.user_avatar,
+          }
         },
         errorManager: {
           status: res.statusCode,
